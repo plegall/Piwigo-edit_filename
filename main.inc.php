@@ -38,10 +38,17 @@ function editfilename_modify($content, &$smarty)
 add_event_handler('loc_end_picture_modify', 'editfilename_add_modify_vars_to_template');
 function editfilename_add_modify_vars_to_template()
 {
-  global $image_file, $template;
+  global $image_file, $template, $data;
 
-  $file_wo_ext = get_filename_wo_extension($image_file);
-  $ext = get_extension($image_file);
+  $filename = $image_file;
+  if (isset($data['file']))
+  {
+    // the filename has just been updated
+    $filename = $data['file'];
+  }
+
+  $file_wo_ext = get_filename_wo_extension($filename);
+  $ext = get_extension($filename);
   
   $template->assign(
     array(
