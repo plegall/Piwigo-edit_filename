@@ -20,16 +20,18 @@ function editfilename_set_prefilter_modify()
 
 function editfilename_modify($content, &$smarty)
 {
-  $search = "<legend>{'Properties'|@translate}</legend>";
+  $search = "<p>
+      <strong>{'Title'";
 
   // We use the <tr> from the Creation date, and give them a new <tr>
-  $replacement = $search.'
-
-    <p>
+  $replacement = '<p>
       <strong>{\'File name\'|@translate}</strong>
       <br>
-      <input type="text" class="large" name="filename" value="{$FILENAME|@escape}">.{$FILENAME_EXTENSION}
-    </p>';
+      <input type="text" class="large" name="filename" value="{$FILENAME|@escape}" style="width: calc(100% - 45px);">.{$FILENAME_EXTENSION}
+    </p>
+
+    <p>
+      <strong>{\'Title\'';
 
   return str_replace($search, $replacement, $content);
 }
