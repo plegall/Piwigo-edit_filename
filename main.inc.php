@@ -18,7 +18,7 @@ function editfilename_set_prefilter_modify()
 	$template->set_prefilter('picture_modify', 'editfilename_modify');
 }
 
-function editfilename_modify($content, &$smarty)
+function editfilename_modify($content)
 {
   $search = "<p>
       <strong>{'Title'";
